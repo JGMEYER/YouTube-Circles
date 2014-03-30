@@ -1,0 +1,51 @@
+/*
+Colors: 
+  #558C89 - dark blue
+  #74AFAD - light blue
+  #D9853B - orange
+  #ECECEA - cream
+*/
+
+html, body, #main-container {
+  width: 100%;
+  height: 100%;
+  margin: 0px;
+  padding: 0px;
+  background-color: #ECECEA;
+  overflow: hidden;
+}
+
+#search-bar {
+  width: 100%;
+  height: 50px;
+  background-color: #D98538;
+}
+
+.circle {
+  width: 10%;
+  background:url(http://placehold.it/320x180) no-repeat;
+  background-position: center, center;
+  position: absolute;
+}
+
+#video-container {
+  width: 26%;
+  top: 50%;
+  left: 50%;
+  margin-top: -13%;
+  margin-left: -13%;
+  background-color: #74AFAD;
+  background-position: center;
+  padding: 0px;
+  position: absolute;
+}
+
+#video {
+  width: 70%;
+  height: 40%;
+  margin-top: 30%;
+  margin-left: 15%;
+  border: 3px solid #ECECEA;
+  padding: 0px;
+  position: relative;
+}
