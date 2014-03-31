@@ -11,8 +11,16 @@ $.fn.resizeElement = function() {
 
 // Resizes all player elements within the browser window
 $.fn.handleResize = function(animate) {
+  var videoContainer = $( '#video-container' );
+  var searchText = $( '#search-text' );
+  
   $( '.circle' ).resizeElement();
-  $( '#video-container' ).resizeElement();
+  videoContainer.resizeElement();
+  searchText.css({
+    'top' : videoContainer.height() / 2 - searchText.height() / 2 + 'px',
+    'width' : '50%'
+  });
+  
   $( document ).positionCircles(animate);
 }
 

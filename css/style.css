@@ -1,22 +1,5 @@
-/*
-Color Set 1
-  #558C89 - dark blue
-  #74AFAD - light blue
-  #D9853B - orange
-  #ECECEA - cream
-  
-Color Set 2
-  #336699 - blue
-  #666666 - dark grey
-  #999999 - light grey
-  
-Color Set 3
-  #999999
-  #272727
-*/
 
 body {
-  /*background:url(padded.png);*/
   background-color: #191919;
 }
 
@@ -65,11 +48,11 @@ html, body, #main-container {
   left: 50%;
   margin-top: -13%;
   margin-left: -13%;
-  background-color: #191919;/*#272727;*/
+  background-color: #191919;
   background-position: center, center;
   opacity: 1;
   border: 3px solid #999999;
-  text-align: center;
+  vertical-align: middle;;
   padding: 0px;
   position: absolute;
   z-index: 2;
@@ -88,4 +71,22 @@ html, body, #main-container {
   opacity: 0.2;
   font-family: "Verdana";
   font-size: 10px;
+}
+
+#search-form {
+  width: 100%;
+  height: 100%;
+}
+
+input {
+  text-align: center;
+}
+
+#search-text {
+  position: relative;
+  display: block;
+  margin : 0 auto;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  height: 20px;
+  font-size: 14px;
 }
