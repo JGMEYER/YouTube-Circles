@@ -36,7 +36,8 @@ $.fn.positionCircles = function(animate) {
     if (animate) {
       $( this ).css({
         'left' : start_x + 'px',
-        'top' : start_y + 'px'
+        'top' : start_y + 'px',
+        'z-index' : 1
       });
     
       $( this ).animate({
@@ -66,13 +67,14 @@ $.fn.refreshPlayerProperties = function() {
       var data = ui.draggable.data('videoinfo');
       var videoId = data.videoId;
       var title = data.title;
-      var imageURL = data.imageURL
+      var imageURL = data.imageURL;
       $( '#video-container' ).css({
         'background' : 'url(' + imageURL + ') no-repeat',
         'background-position' : 'center, center',
         'background-size' : '180%, 180%'
       });
       $( '#bg-music-container' ).html('<embed height="0" width="0" src="//www.youtube.com/v/' + videoId + '&rel=0&showinfo=0&controls=0&autoplay=1&t=0s" />');
+      $( document ).handleResize(true);
     }
   });
 }
