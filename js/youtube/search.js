@@ -7,23 +7,25 @@ function showResponse(response) {
     var items = response.items;
     $( '#main-container' ).html('<div id="video-container"></div>');
     
-    // display search results
-    for (var i = 0; i < items.length; i++) {
-      var item = response.items[i];
-      var kind = item.id.kind;
+    if (items != null) {
+      // display search results
+      for (var i = 0; i < items.length; i++) {
+        var item = response.items[i];
+        var kind = item.id.kind;
       
-      if ( kind == 'youtube#video' ) {
-        // add circle to div with video data
-        var imgURL = item.snippet.thumbnails['medium'].url
-        var circleHTML = '<div class="circle" style="background:url(' + imgURL + ') no-repeat; background-position: center, center;"></div>';
-        $( '#main-container' ).append(circleHTML);
+        if ( kind == 'youtube#video' ) {
+          // add circle to div with video data
+          var imgURL = item.snippet.thumbnails['medium'].url
+          var circleHTML = '<div class="circle" style="background:url(' + imgURL + ') no-repeat; background-position: center, center;"></div>';
+          $( '#main-container' ).append(circleHTML);
         
-        var circle = $( '#main-container' ).children('.circle').last();
-        circle.data('videoinfo', {
-          videoId : item.id.videoId,
-          title : item.snippet.title,
-          imageURL : item.snippet.thumbnails['high'].url
-        });
+          var circle = $( '#main-container' ).children('.circle').last();
+          circle.data('videoinfo', {
+            videoId : item.id.videoId,
+            title : item.snippet.title,
+            imageURL : item.snippet.thumbnails['high'].url
+          });
+        }
       }
     }
     

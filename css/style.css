@@ -16,7 +16,8 @@ Color Set 3
 */
 
 body {
-  background:url(pw_maze_black.png);
+  /*background:url(padded.png);*/
+  background-color: #191919;
 }
 
 html, body, #main-container {
@@ -41,6 +42,9 @@ html, body, #main-container {
   opacity: 0.3;
   position: absolute;
   z-index: 1;
+  -moz-box-shadow: 0 5px 5px rgba(0, 0, 0, 1);
+  -webkit-box-shadow: 0 5px 5px rgba(0, 0, 0, 1);
+  box-shadow: 0 5px 5px rgba(0, 0, 0, 0.3);
 }
 
 .circle:hover {
@@ -61,7 +65,7 @@ html, body, #main-container {
   left: 50%;
   margin-top: -13%;
   margin-left: -13%;
-  background-color: #272727;
+  background-color: #191919;/*#272727;*/
   background-position: center, center;
   opacity: 1;
   border: 3px solid #999999;
@@ -69,6 +73,9 @@ html, body, #main-container {
   padding: 0px;
   position: absolute;
   z-index: 2;
+  -moz-box-shadow: 0 5px 5px rgba(0, 0, 0, 0.3);
+  -webkit-box-shadow: 0 5px 5px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 5px 5px rgba(0, 0, 0, 0.3);
 }
 
 #copyright {
