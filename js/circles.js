@@ -87,7 +87,7 @@ $.fn.refreshPlayerProperties = function() {
   });
   
   $( '#search-form' ).hover(function(){
-    $( '#search-text' ).stop(true).fadeTo(900, 0.45);
+    $( '#search-text' ).stop(true).fadeTo(900, 0.7);
   },
   function(){
     $( '#search-text' ).fadeTo(1200, 0);
