@@ -1,17 +1,29 @@
 /*
-Colors: 
+Color Set 1
   #558C89 - dark blue
   #74AFAD - light blue
   #D9853B - orange
   #ECECEA - cream
+  
+Color Set 2
+  #336699 - blue
+  #666666 - dark grey
+  #999999 - light grey
+  
+Color Set 3
+  #999999
+  #272727
 */
+
+body {
+  background:url(pw_maze_black.png);
+}
 
 html, body, #main-container {
   width: 100%;
   height: 100%;
   margin: 0px;
   padding: 0px;
-  background-color: #ECECEA;
   overflow: hidden;
 }
 
@@ -25,7 +37,22 @@ html, body, #main-container {
   width: 10%;
   background:url(http://placehold.it/320x180) no-repeat;
   background-position: center, center;
+  border: 2px solid #999999;
+  opacity: 0.3;
   position: absolute;
+  z-index: 1;
+}
+
+.circle:hover {
+  opacity: 1;
+}
+
+#circles-container {
+  width: 100%;
+  height: 100%;
+  margin: 0px;
+  padding: 0px;
+  overflow: hidden;
 }
 
 #video-container {
@@ -34,18 +61,24 @@ html, body, #main-container {
   left: 50%;
   margin-top: -13%;
   margin-left: -13%;
-  background-color: #74AFAD;
-  background-position: center;
+  background-color: #272727;
+  background-position: center, center;
+  opacity: 1;
+  border: 3px solid #999999;
+  text-align: center;
   padding: 0px;
   position: absolute;
+  z-index: 2;
 }
 
-#video {
-  width: 70%;
-  height: 40%;
-  margin-top: 30%;
-  margin-left: 15%;
-  border: 3px solid #ECECEA;
-  padding: 0px;
-  position: relative;
+#copyright {
+  position: absolute;
+  bottom: 5px;
+  right: 15px;
+  width: 100%;
+  text-align: right;
+  color: #888888;
+  opacity: 0.2;
+  font-family: "Verdana";
+  font-size: 10px;
 }
