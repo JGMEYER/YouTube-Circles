@@ -66,7 +66,7 @@ $.fn.positionCircles = function(animate) {
   });
 }
 
-// Reassigns player drag and drop properties after new circles created
+// Reassigns player properties after new circles created
 $.fn.refreshPlayerProperties = function() {
   $( '.circle' ).draggable({ revert: true, revertDuration: 180 });
   
@@ -84,6 +84,17 @@ $.fn.refreshPlayerProperties = function() {
       $( '#bg-music-container' ).html('<embed height="0" width="0" src="//www.youtube.com/v/' + videoId + '&rel=0&showinfo=0&controls=0&autoplay=1&t=0s" />');
       $( document ).handleResize(true);
     }
+  });
+  
+  $( '#search-form' ).hover(function(){
+    $( '#search-text' ).stop(true).fadeTo(900, 0.45);
+  },
+  function(){
+    $( '#search-text' ).fadeTo(1200, 0);
+  });
+
+  $( '#search-form' ).click(function(){
+    $( '#search-text' ).focus();
   });
 }
 

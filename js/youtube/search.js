@@ -8,9 +8,12 @@ function showResponse(response) {
   
   // TODO just remove/replace circles - keep video-container untouched (load first in HTML)
   $( '#main-container' ).html('<div id="video-container"></div>');
-  $( '#video-container' ).html('<form id="search-form" class="form-inline"></form>');
+  $( '#video-container' ).html('<form id="search-form"></form>');
   
-  $( '#search-form' ).html('<input id="search-text" class="input-small" type="text"></input>');
+  $( '#search-form' ).html('<input id="search-text" type="text" placeholder="ENTER: MUSIC"></input>');
+  
+  //$( '#main-container' ).remove( $( '.circle' ) );
+  
   $( '#search-form' ).submit(function() {
     search( $( "#search-text" ).val() );
     return false;
