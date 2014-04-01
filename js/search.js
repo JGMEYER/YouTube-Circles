@@ -20,20 +20,11 @@ function showResponse(response) {
       $( "#main-container" ).append(circle);
       
       // add circle to div with video data
-<<<<<<< HEAD
-      var imgURL = item.snippet.thumbnails['medium'].url;
-      var circleHTML = '<div class="circle" style="background:url(' + imgURL + ') no-repeat; background-position: center, center;"></div>';
-      $( '#main-container' ).append(circleHTML);
-    
-      var circle = $( '#main-container' ).children('.circle').last();
-      circle.data('videoinfo', {
-=======
       circle.css({
         "background": "url(" + imgURL + ") no-repeat",
         "background-position": "center, center"
       });
       circle.data("videoinfo", {
->>>>>>> master
         videoId : item.id.videoId,
         title : item.snippet.title,
         imageURL : item.snippet.thumbnails[ "high" ].url
@@ -70,15 +61,6 @@ function onYouTubeApiLoad() {
   $( "#bg-music-container" ).tubeplayer({
     width: 0,
     height: 0,
-<<<<<<< HEAD
-    allowFullScreen: 'false',
-    initialVideo: '',
-    preferredQuality: 'default',
-    onPlayerEnded: function() {
-      var firstCircle = $( '#main-container' ).children('.circle').first(),
-          data = firstCircle.data('videoinfo');
-      $( document ).startNewSong(data);
-=======
     allowFullScreen: "false",
     initialVideo: "",
     preferredQuality: "default",
@@ -86,7 +68,6 @@ function onYouTubeApiLoad() {
       var firstCircle = $( "#main-container" ).children( ".circle" ).first(),
           data = firstCircle.data( "videoinfo" );
       $( document ).startNewSong( data );
->>>>>>> master
     }
   });
 

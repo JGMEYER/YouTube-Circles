@@ -62,19 +62,11 @@ $.fn.positionCircles = function(animate) {
 $.fn.refreshPlayerProperties = function() {
   
   // handle how circles can be dragged and dropped
-<<<<<<< HEAD
-  $( '.circle' ).draggable({ revert: true, revertDuration: 180 });
-  $( '#video-container' ).droppable({
-    drop: function (event, ui) {
-      var data = ui.draggable.data('videoinfo');
-      $( document ).startNewSong(data);
-=======
   $( ".circle" ).draggable( { revert: true, revertDuration: 180 } );
   $( "#video-container" ).droppable({
     drop: function ( event, ui ) {
       var data = ui.draggable.data( "videoinfo" );
       $( document ).startNewSong( data );
->>>>>>> master
     }
   });
   
@@ -103,27 +95,12 @@ $.fn.resizeElement = function() {
 }
 
 // Starts the song with the given information contained in a circle
-<<<<<<< HEAD
-$.fn.startNewSong = function(data) {
-=======
 $.fn.startNewSong = function( data ) {
->>>>>>> master
   var videoId = data.videoId,
       title = data.title,
       imageURL = data.imageURL;
       
   // update center picture
-<<<<<<< HEAD
-  $( '#video-container' ).css({
-    'background' : 'url(' + imageURL + ') no-repeat',
-    'background-position' : 'center, center',
-    'background-size' : '180%, 180%'
-  });
-  
-  // begin next song
-  $( '#bg-music-container' ).tubeplayer('play', videoId);
-  searchByRelated(videoId);
-=======
   $( "#video-container" ).css({
     "background": "url(" + imageURL + ") no-repeat",
     "background-position": "center, center",
@@ -133,7 +110,6 @@ $.fn.startNewSong = function( data ) {
   // begin next song
   $( "#bg-music-container" ).tubeplayer( "play", videoId );
   searchByRelated( videoId );
->>>>>>> master
 }
 
 // Properly resize elements when window size changes
