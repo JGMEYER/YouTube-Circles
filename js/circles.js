@@ -84,7 +84,7 @@ $.fn.refreshPlayerProperties = function() {
         'background-position' : 'center, center',
         'background-size' : '180%, 180%'
       });
-      $( '#bg-music-container' ).html('<embed height="0" width="0" src="//www.youtube.com/v/' + videoId + '&rel=0&showinfo=0&controls=0&autoplay=1&t=0s" />');
+      $( '#bg-music-container' ).tubeplayer('play', videoId);
       searchByRelated(videoId);
     }
   });
