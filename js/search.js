@@ -1,29 +1,33 @@
 
 // Yes, this is shown publicly, no you do not have permission to use it
-var apiKey = 'AIzaSyCe_BSo93KVRNpwYUpfrvNiJxmoqXlzvyM';
+var apiKey = "AIzaSyCe_BSo93KVRNpwYUpfrvNiJxmoqXlzvyM";
 
 // Update circles with new search results
 function showResponse(response) {    
   var items = response.items;
   
-  $( '#search-text' ).val("");
-  $( '#main-container .circle' ).remove();
+  // reset circles
+  $( "#search-text" ).val( "" );
+  $( "#main-container .circle" ).remove();
   
-  if (items != null) {
+  if ( items != null ) {
     // display search results
-    for (var i = 0; i < items.length; i++) {
-      var item = response.items[i];
+    for ( var i = 0; i < items.length; i++ ) {
+      var item = response.items[ i ];
+      
+      var imgURL = item.snippet.thumbnails[ "medium" ].url,
+          circle = $( "<div class='circle'></div>" );
+      $( "#main-container" ).append(circle);
       
       // add circle to div with video data
-      var imgURL = item.snippet.thumbnails['medium'].url;
-      var circleHTML = '<div class="circle" style="background:url(' + imgURL + ') no-repeat; background-position: center, center;"></div>';
-      $( '#main-container' ).append(circleHTML);
-    
-      var circle = $( '#main-container' ).children('.circle').last();
-      circle.data('videoinfo', {
+      circle.css({
+        "background": "url(" + imgURL + ") no-repeat",
+        "background-position": "center, center"
+      });
+      circle.data("videoinfo", {
         videoId : item.id.videoId,
         title : item.snippet.title,
-        imageURL : item.snippet.thumbnails['high'].url
+        imageURL : item.snippet.thumbnails[ "high" ].url
       });
     }
   }
@@ -34,7 +38,7 @@ function showResponse(response) {
 
 // Called automatically when JavaScript client library is loaded.
 function onClientLoad() {
-  gapi.client.load('youtube', 'v3', onYouTubeApiLoad);
+  gapi.client.load( "youtube", "v3", onYouTubeApiLoad );
 }
 
 // Called automatically when YouTube API interface is loaded
@@ -42,11 +46,11 @@ function onYouTubeApiLoad() {
   gapi.client.setApiKey(apiKey);
 
   // setup search functionality
-  $( '#search-form' ).submit(function() {
+  $( "#search-form" ).submit(function() {
     searchByQuery( $( "#search-text" ).val() );
     return false;
   });
-  $( "#search-text" ).keypress(function(event) {
+  $( "#search-text" ).keypress(function( event ) {
     if (event.which == 13) {
       event.preventDefault();
       $( "#search-form" ).submit();
@@ -54,16 +58,16 @@ function onYouTubeApiLoad() {
   });
   
   // setup music player
-  $( '#bg-music-container' ).tubeplayer({
+  $( "#bg-music-container" ).tubeplayer({
     width: 0,
     height: 0,
-    allowFullScreen: 'false',
-    initialVideo: '',
-    preferredQuality: 'default',
+    allowFullScreen: "false",
+    initialVideo: "",
+    preferredQuality: "default",
     onPlayerEnded: function() {
-      var firstCircle = $( '#main-container' ).children('.circle').first(),
-          data = firstCircle.data('videoinfo');
-      $( document ).startNewSong(data);
+      var firstCircle = $( "#main-container" ).children( ".circle" ).first(),
+          data = firstCircle.data( "videoinfo" );
+      $( document ).startNewSong( data );
     }
   });
 
@@ -71,17 +75,17 @@ function onYouTubeApiLoad() {
 }
 
 // Get videos that match the user-submitted query
-function searchByQuery(query) {
+function searchByQuery( query ) {
   var request = gapi.client.youtube.search.list({
-    part: 'snippet',
-    type: 'video',
+    maxResults: "10",
+    part: "snippet",
     q: query,
-    maxResults: '10'
+    type: "video"
   });
   
-  if (query == null || query == '') {
+  if (query == null || query == "") {
     request = gapi.client.youtube.search.list({
-      maxResults: '0'
+      maxResults: "0"
     });
   }
   
@@ -89,17 +93,17 @@ function searchByQuery(query) {
 }
 
 // Get list of videos related to the given videoId
-function searchByRelated(videoId) {
+function searchByRelated( videoId ) {
   var request = gapi.client.youtube.search.list({
-    part: 'snippet',
-    type: 'video',
+    maxResults: "10",
+    part: "snippet",
     relatedToVideoId: videoId,
-    maxResults: '10'
+    type: "video"
   });
   
-  if (videoId == null || videoId == '') {
+  if (videoId == null || videoId == "") {
     request = gapi.client.youtube.search.list({
-      maxResults: '0'
+      maxResults: "0"
     });
   }
   
