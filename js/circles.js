@@ -76,16 +76,7 @@ $.fn.refreshPlayerProperties = function() {
   $( '#video-container' ).droppable({
     drop: function (event, ui) {
       var data = ui.draggable.data('videoinfo');
-      var videoId = data.videoId;
-      var title = data.title;
-      var imageURL = data.imageURL;
-      $( '#video-container' ).css({
-        'background' : 'url(' + imageURL + ') no-repeat',
-        'background-position' : 'center, center',
-        'background-size' : '180%, 180%'
-      });
-      $( '#bg-music-container' ).tubeplayer('play', videoId);
-      searchByRelated(videoId);
+      $( document ).startNewSong(data);
     }
   });
   
@@ -101,6 +92,24 @@ $.fn.refreshPlayerProperties = function() {
   $( '#search-form' ).click(function(){
     $( '#search-text' ).focus();
   });
+}
+
+// Starts the song with the given information contained in a circle
+$.fn.startNewSong = function(data) {
+  var videoId = data.videoId,
+      title = data.title,
+      imageURL = data.imageURL;
+      
+  // update center picture
+  $( '#video-container' ).css({
+    'background' : 'url(' + imageURL + ') no-repeat',
+    'background-position' : 'center, center',
+    'background-size' : '180%, 180%'
+  });
+  
+  // begin next song
+  $( '#bg-music-container' ).tubeplayer('play', videoId);
+  searchByRelated(videoId);
 }
 
 // Properly resize elements when window size changes

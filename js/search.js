@@ -15,7 +15,7 @@ function showResponse(response) {
       var item = response.items[i];
       
       // add circle to div with video data
-      var imgURL = item.snippet.thumbnails['medium'].url
+      var imgURL = item.snippet.thumbnails['medium'].url;
       var circleHTML = '<div class="circle" style="background:url(' + imgURL + ') no-repeat; background-position: center, center;"></div>';
       $( '#main-container' ).append(circleHTML);
     
@@ -60,12 +60,11 @@ function onYouTubeApiLoad() {
     allowFullScreen: 'false',
     initialVideo: '',
     preferredQuality: 'default',
-    onPlay: function(id){},
-    onPause: function(){},
-    onStop: function(){},
-    onSeek: function(time){},
-    onMute: function(){},
-    onUnMute: function(){}
+    onPlayerEnded: function() {
+      var firstCircle = $( '#main-container' ).children('.circle').first(),
+          data = firstCircle.data('videoinfo');
+      $( document ).startNewSong(data);
+    }
   });
 
   searchByQuery(null);
