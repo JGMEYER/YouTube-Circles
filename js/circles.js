@@ -41,6 +41,7 @@ $.fn.positionCircles = function(animate) {
     var final_x = Math.round(center_x + radius * Math.cos(theta - half_step) - $( this ).width() / 2),
         final_y = Math.round(center_y + radius * Math.sin(theta - half_step) - $( this ).height() / 2);
 
+    // animate circles outwards
     if (animate) {
       $( this ).css({
         'left' : start_x + 'px',
@@ -55,6 +56,7 @@ $.fn.positionCircles = function(animate) {
         $( this ).css('z-index', '3');
       });
       
+    // automatically place at final positions
     } else {
       $( this ).css({
         'left' : final_x + 'px',
@@ -68,8 +70,9 @@ $.fn.positionCircles = function(animate) {
 
 // Reassigns player properties after new circles created
 $.fn.refreshPlayerProperties = function() {
-  $( '.circle' ).draggable({ revert: true, revertDuration: 180 });
   
+  // handle how circles can be dragged and dropped
+  $( '.circle' ).draggable({ revert: true, revertDuration: 180 });
   $( '#video-container' ).droppable({
     drop: function (event, ui) {
       var data = ui.draggable.data('videoinfo');
@@ -82,10 +85,11 @@ $.fn.refreshPlayerProperties = function() {
         'background-size' : '180%, 180%'
       });
       $( '#bg-music-container' ).html('<embed height="0" width="0" src="//www.youtube.com/v/' + videoId + '&rel=0&showinfo=0&controls=0&autoplay=1&t=0s" />');
-      $( document ).handleResize(true);
+      searchByRelated(videoId);
     }
   });
   
+  // hide search bar when not hovering over center circle
   $( '#search-form' ).hover(function(){
     $( '#search-text' ).stop(true).fadeTo(900, 0.7);
   },
@@ -93,6 +97,7 @@ $.fn.refreshPlayerProperties = function() {
     $( '#search-text' ).fadeTo(1200, 0);
   });
 
+  // focus search bar when center circle clicked
   $( '#search-form' ).click(function(){
     $( '#search-text' ).focus();
   });
