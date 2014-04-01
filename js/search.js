@@ -2,23 +2,12 @@
 // Yes, this is shown publicly, no you do not have permission to use it
 var apiKey = 'AIzaSyCe_BSo93KVRNpwYUpfrvNiJxmoqXlzvyM';
 
-// Helper function to display JavaScript value on HTML page.
+// Update circles with new search results
 function showResponse(response) {    
   var items = response.items;
   
   $( '#search-text' ).val("");
   $( '#main-container .circle' ).remove();
-  
-  $( '#search-form' ).submit(function() {
-    searchByQuery( $( "#search-text" ).val() );
-    return false;
-  });
-  $( "#search-text" ).keypress(function(event) {
-    if (event.which == 13) {
-      event.preventDefault();
-      $( "#search-form" ).submit();
-    }
-  });
   
   if (items != null) {
     // display search results
@@ -51,6 +40,33 @@ function onClientLoad() {
 // Called automatically when YouTube API interface is loaded
 function onYouTubeApiLoad() {
   gapi.client.setApiKey(apiKey);
+
+  // setup search functionality
+  $( '#search-form' ).submit(function() {
+    searchByQuery( $( "#search-text" ).val() );
+    return false;
+  });
+  $( "#search-text" ).keypress(function(event) {
+    if (event.which == 13) {
+      event.preventDefault();
+      $( "#search-form" ).submit();
+    }
+  });
+  
+  // setup music player
+  $( '#bg-music-container' ).tubeplayer({
+    width: 0,
+    height: 0,
+    allowFullScreen: 'false',
+    initialVideo: '',
+    preferredQuality: 'default',
+    onPlay: function(id){},
+    onPause: function(){},
+    onStop: function(){},
+    onSeek: function(time){},
+    onMute: function(){},
+    onUnMute: function(){}
+  });
 
   searchByQuery(null);
 }
