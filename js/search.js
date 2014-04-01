@@ -6,16 +6,11 @@ var apiKey = 'AIzaSyCe_BSo93KVRNpwYUpfrvNiJxmoqXlzvyM';
 function showResponse(response) {    
   var items = response.items;
   
-  // TODO just remove/replace circles - keep video-container untouched (load first in HTML)
-  $( '#main-container' ).html('<div id="video-container"></div>');
-  $( '#video-container' ).html('<form id="search-form"></form>');
-  
-  $( '#search-form' ).html('<input id="search-text" type="text" placeholder="ENTER: MUSIC"></input>');
-  
-  //$( '#main-container' ).remove( $( '.circle' ) );
+  $( '#search-text' ).val("");
+  $( '#main-container .circle' ).remove();
   
   $( '#search-form' ).submit(function() {
-    search( $( "#search-text" ).val() );
+    searchByQuery( $( "#search-text" ).val() );
     return false;
   });
   $( "#search-text" ).keypress(function(event) {
@@ -29,21 +24,18 @@ function showResponse(response) {
     // display search results
     for (var i = 0; i < items.length; i++) {
       var item = response.items[i];
-      var kind = item.id.kind;
-    
-      if ( kind == 'youtube#video' ) {
-        // add circle to div with video data
-        var imgURL = item.snippet.thumbnails['medium'].url
-        var circleHTML = '<div class="circle" style="background:url(' + imgURL + ') no-repeat; background-position: center, center;"></div>';
-        $( '#main-container' ).append(circleHTML);
       
-        var circle = $( '#main-container' ).children('.circle').last();
-        circle.data('videoinfo', {
-          videoId : item.id.videoId,
-          title : item.snippet.title,
-          imageURL : item.snippet.thumbnails['high'].url
-        });
-      }
+      // add circle to div with video data
+      var imgURL = item.snippet.thumbnails['medium'].url
+      var circleHTML = '<div class="circle" style="background:url(' + imgURL + ') no-repeat; background-position: center, center;"></div>';
+      $( '#main-container' ).append(circleHTML);
+    
+      var circle = $( '#main-container' ).children('.circle').last();
+      circle.data('videoinfo', {
+        videoId : item.id.videoId,
+        title : item.snippet.title,
+        imageURL : item.snippet.thumbnails['high'].url
+      });
     }
   }
   
@@ -58,20 +50,39 @@ function onClientLoad() {
 
 // Called automatically when YouTube API interface is loaded
 function onYouTubeApiLoad() {
-  gapi.client.setApiKey( apiKey );
+  gapi.client.setApiKey(apiKey);
 
-  search(null);
+  searchByQuery(null);
 }
 
-// Perform search using query passed by user
-function search(userSearch) {
+// Get videos that match the user-submitted query
+function searchByQuery(query) {
   var request = gapi.client.youtube.search.list({
     part: 'snippet',
-    q: userSearch,
+    type: 'video',
+    q: query,
     maxResults: '10'
   });
   
-  if (userSearch == null || userSearch == '') {
+  if (query == null || query == '') {
+    request = gapi.client.youtube.search.list({
+      maxResults: '0'
+    });
+  }
+  
+  request.execute(onSearchResponse);
+}
+
+// Get list of videos related to the given videoId
+function searchByRelated(videoId) {
+  var request = gapi.client.youtube.search.list({
+    part: 'snippet',
+    type: 'video',
+    relatedToVideoId: videoId,
+    maxResults: '10'
+  });
+  
+  if (videoId == null || videoId == '') {
     request = gapi.client.youtube.search.list({
       maxResults: '0'
     });
