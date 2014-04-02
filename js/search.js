@@ -13,7 +13,7 @@ http://creativecommons.org/licenses/by-nc-nd/4.0/ or send a letter to:
 var apiKey = "AIzaSyCe_BSo93KVRNpwYUpfrvNiJxmoqXlzvyM";
 
 // Update circles with new search results
-function showResponse(response) {    
+function showResponse( response ) {    
   var items = response.items;
   
   // reset circles
@@ -27,7 +27,7 @@ function showResponse(response) {
       
       var imgURL = item.snippet.thumbnails[ "medium" ].url,
           circle = $( "<div class='circle'></div>" );
-      $( "#main-container" ).append(circle);
+      $( "#main-container" ).append( circle );
       
       // add circle to div with video data
       circle.css({
@@ -42,7 +42,7 @@ function showResponse(response) {
     }
   }
   
-  $( document ).handleResize(true);
+  $( document ).handleResize( true );
   $( document ).refreshPlayerProperties();
 }
 
@@ -53,7 +53,7 @@ function onClientLoad() {
 
 // Called automatically when YouTube API interface is loaded
 function onYouTubeApiLoad() {
-  gapi.client.setApiKey(apiKey);
+  gapi.client.setApiKey( apiKey );
 
   // setup search functionality
   $( "#search-form" ).submit(function() {
@@ -61,7 +61,7 @@ function onYouTubeApiLoad() {
     return false;
   });
   $( "#search-text" ).keypress(function( event ) {
-    if (event.which == 13) {
+    if ( event.which == 13 ) { // submit on enter
       event.preventDefault();
       $( "#search-form" ).submit();
     }
@@ -81,7 +81,7 @@ function onYouTubeApiLoad() {
     }
   });
   
-  // set up player controls
+  // set up play pause
   $( "#play-pause-btn" ).click(function() {
     if ( $( this ).attr( "class" ) == "play" ) {
       $( "#bg-music-container" ).tubeplayer( "play" );
@@ -89,6 +89,19 @@ function onYouTubeApiLoad() {
     } else {
       $( "#bg-music-container" ).tubeplayer( "pause" );
       $( this ).attr( "class", "play" );
+    }
+  });
+  
+  // set up volume slider
+  $( "#volume-slider" ).slider({
+    range: "min",
+    min: 1,
+    value: 75,
+    slide: function( event, ui ) {
+      $( "#bg-music-container" ).tubeplayer( "volume", ui.value );
+    },
+    stop: function( event, ui ) {
+      $( "#volume-slider" ).blur();
     }
   });
 
@@ -104,13 +117,13 @@ function searchByQuery( query ) {
     type: "video"
   });
   
-  if (query == null || query == "") {
+  if ( query == null || query == "" ) {
     request = gapi.client.youtube.search.list({
       maxResults: "0"
     });
   }
   
-  request.execute(onSearchResponse);
+  request.execute( onSearchResponse );
 }
 
 // Get list of videos related to the given videoId
@@ -122,13 +135,13 @@ function searchByRelated( videoId ) {
     type: "video"
   });
   
-  if (videoId == null || videoId == "") {
+  if ( videoId == null || videoId == "" ) {
     request = gapi.client.youtube.search.list({
       maxResults: "0"
     });
   }
   
-  request.execute(onSearchResponse);
+  request.execute( onSearchResponse );
 }
 
 // Called automatically with the response of the YouTube API request.
