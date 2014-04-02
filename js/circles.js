@@ -118,7 +118,9 @@ $.fn.startNewSong = function( data ) {
   });
   
   // begin next song
+  var volume = $( "#volume-slider" ).slider( "option", "value" );
   $( "#bg-music-container" ).tubeplayer( "play", videoId );
+  $( "#bg-music-container" ).tubeplayer( "volume", volume );
   searchByRelated( videoId );
   
   // set up player controls

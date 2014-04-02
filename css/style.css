@@ -107,6 +107,7 @@ input {
 /* Player Controls */
 
 #play-pause-btn {
+  float: left;
   height: 32px;
   width: 32px;
 }
@@ -125,8 +126,46 @@ input {
   bottom: 20px;
   height: 32px;
   left: 30px;
+  overflow: hidden;
+  opacity: .3;
   position: absolute;
   visibility: hidden;
+  width: 200px;
+}
+
+#player-controls:hover {
+  opacity: 1;
+}
+
+#volume-slider {
+  background: #989898;
+  border: 1px solid #666;
+  float: left;
+  height: 9px;
+  margin-left: 11px;
+  margin-top: 11px;
+  width: 100px;
+}
+
+#volume-slider .ui-slider-handle {
+  background: #989898;
+  border: 1px solid #333;
+  cursor: pointer;
+  height: 22px;
+  margin-left: -4px;
+  margin-top: -2px;
+  outline: none;
+  position: absolute;
+  width: 9px;
+}
+
+#volume-slider .ui-slider-horizontal, 
+#volume-slider .ui-slider-range-min {
+  background: #989898;
+}
+
+#volume-slider .ui-corner-all {
+  border-radius: 3px;
 }
 
 /* Footer */
