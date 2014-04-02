@@ -130,6 +130,19 @@ $.fn.startNewSong = function( data ) {
   $( "#play-pause-btn" ).attr( "class", "pause" );
 }
 
+$.fn.togglePlayPause = function() {
+  var playButton = $( "#play-pause-btn" ),
+      musicContainer = $( "#bg-music-container" );
+  
+  if ( playButton.attr( "class" ) == "play" ) {
+    musicContainer.tubeplayer( "play" );
+    playButton.attr( "class", "pause" );
+  } else {
+    musicContainer.tubeplayer( "pause" );
+    playButton.attr( "class", "play" );
+  }
+}
+
 // Properly resize elements when window size changes
 $( window ).resize(function() {
   $( document ).handleResize( false );

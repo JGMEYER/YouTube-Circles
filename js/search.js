@@ -55,54 +55,72 @@ function onClientLoad() {
 function onYouTubeApiLoad() {
   gapi.client.setApiKey( apiKey );
 
+  var searchForm = $( "#search-form" ),
+      searchText = $( "#search-text" ),
+      musicContainer = $( "#bg-music-container" ),
+      mainContainer = $( "#main-container" )
+      playButton = $( "#play-pause-btn" ),
+      volumeSlider = $( "#volume-slider" );
+
   // setup search functionality
-  $( "#search-form" ).submit(function() {
+  searchForm.submit(function() {
     searchByQuery( $( "#search-text" ).val() );
     return false;
   });
-  $( "#search-text" ).keypress(function( event ) {
+  searchText.keypress(function( event ) {
     if ( event.which == 13 ) { // submit on enter
       event.preventDefault();
-      $( "#search-form" ).submit();
+      $( this ).submit();
+      $( this ).blur();
     }
   });
+  searchText.focus();
   
   // setup music player
-  $( "#bg-music-container" ).tubeplayer({
+  musicContainer.tubeplayer({
     width: 0,
     height: 0,
     allowFullScreen: "false",
     initialVideo: "",
     preferredQuality: "default",
     onPlayerEnded: function() {
-      var firstCircle = $( "#main-container" ).children( ".circle" ).first(),
+      var firstCircle = mainContainer.children( ".circle" ).first(),
           data = firstCircle.data( "videoinfo" );
       $( document ).startNewSong( data );
     }
   });
   
-  // set up play pause
-  $( "#play-pause-btn" ).click(function() {
-    if ( $( this ).attr( "class" ) == "play" ) {
-      $( "#bg-music-container" ).tubeplayer( "play" );
-      $( this ).attr( "class", "pause" );
-    } else {
-      $( "#bg-music-container" ).tubeplayer( "pause" );
-      $( this ).attr( "class", "play" );
+  // set up play pause button
+  playButton.click( function() {
+    $( document ).togglePlayPause();
+  });
+  
+  // allow play pause with spacebar
+  $( document ).keypress(function( event ) {
+    if ( $( event.target ).closest( "input" )[ 0 ] ) {
+      return;
+    }
+    if( event.which == 32 ) {
+      $( document ).togglePlayPause();
     }
   });
   
   // set up volume slider
-  $( "#volume-slider" ).slider({
+  volumeSlider.slider({
     range: "min",
     min: 1,
     value: 75,
     slide: function( event, ui ) {
-      $( "#bg-music-container" ).tubeplayer( "volume", ui.value );
+      musicContainer.tubeplayer( "volume", ui.value );
     },
     stop: function( event, ui ) {
-      $( "#volume-slider" ).blur();
+      volumeSlider.blur();
     }
+  });
+  
+  // make main container visible
+  $( document ).ready(function() {
+    mainContainer.css("visibility", "visible");
   });
 
   searchByQuery(null);

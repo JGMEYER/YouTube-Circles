@@ -41,6 +41,7 @@ html,
   position: absolute;
   top: 50%;
   vertical-align: middle;
+  /*visibility: hidden;*/
   width: 26%;
   z-index: 2;
 }
@@ -154,12 +155,13 @@ input {
   height: 22px;
   margin-left: -4px;
   margin-top: -2px;
-  outline: none;
+  outline: 0 none;
+  -moz-outline: 0 none;
   position: absolute;
   width: 9px;
 }
 
-#volume-slider .ui-slider-horizontal, 
+#volume-slider .ui-slider-horizontal,
 #volume-slider .ui-slider-range-min {
   background: #989898;
 }
