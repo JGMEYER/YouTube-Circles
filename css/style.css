@@ -1,12 +1,22 @@
 
+/*
+This work is licensed under the Creative Commons Attribution-NonCommercial-
+NoDerivatives 4.0 International License. To view a copy of this license, visit
+http://creativecommons.org/licenses/by-nc-nd/4.0/ or send a letter to:
+
+	Creative Commons
+	444 Castro Street, Suite 900
+	Mountain View, CA, 94041
+*/
+
 /* Body and Background */
 
 body {
   background-color: #191919;
 }
 
-html,
 body,
+html,
 #main-container {
   height: 100%;
   margin: 0;
@@ -37,6 +47,15 @@ body,
 
 /* Search Bar */
 
+input {
+  border: 3px solid #999;
+  border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  opacity: .45;
+  text-align: center;
+}
+
 #search-bar {
   background-color: #d98538;
   height: 50px;
@@ -48,19 +67,10 @@ body,
   width: 100%;
 }
 
-input {
-  border: 3px solid #999;
-  border-radius: 10px;
-  -webkit-border-radius: 10px;
-  -moz-border-radius: 10px;
-  opacity: .45;
-  text-align: center;
-}
-
 #search-text {
   display: block;
   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  font-size: 20px;
+  font-size: 18px;
   font-weight: bold;
   height: 24px;
   margin : 0 auto;
@@ -94,13 +104,38 @@ input {
   width: 100%;
 }
 
+/* Player Controls */
+
+#play-pause-btn {
+  height: 32px;
+  width: 32px;
+}
+
+.pause {
+  background-image: url(pause.png);
+  background-position: center, center;
+}
+
+.play {
+  background-image: url(play.png);
+  background-position: center, center;
+}
+
+#player-controls {
+  bottom: 20px;
+  height: 32px;
+  left: 30px;
+  position: absolute;
+  visibility: hidden;
+}
+
 /* Footer */
 
 #copyright {
   bottom: 5px;
   color: #888;
-  font-family: 'Verdana';
-  font-size: 10px;
+  font-family: "Courier New", Courier, monospace;
+  font-size: 12px;
   opacity: .2;
   position: absolute;
   right: 15px;

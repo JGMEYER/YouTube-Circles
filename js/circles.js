@@ -1,4 +1,14 @@
 
+/*
+This work is licensed under the Creative Commons Attribution-NonCommercial-
+NoDerivatives 4.0 International License. To view a copy of this license, visit
+http://creativecommons.org/licenses/by-nc-nd/4.0/ or send a letter to:
+
+	Creative Commons
+	444 Castro Street, Suite 900
+	Mountain View, CA, 94041
+*/
+
 // Resizes all player elements within the browser window
 $.fn.handleResize = function(animate) {
   var videoContainer = $( "#video-container" );
@@ -110,6 +120,12 @@ $.fn.startNewSong = function( data ) {
   // begin next song
   $( "#bg-music-container" ).tubeplayer( "play", videoId );
   searchByRelated( videoId );
+  
+  // set up player controls
+  if ( $( "#player-controls" ).css( "visibility" ) == "hidden" ) {
+    $( "#player-controls" ).css( "visibility", "visible" );
+  }
+  $( "#play-pause-btn" ).attr( "class", "pause" );
 }
 
 // Properly resize elements when window size changes
