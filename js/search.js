@@ -109,18 +109,13 @@ function onYouTubeApiLoad() {
   volumeSlider.slider({
     range: "min",
     min: 1,
-    value: 75,
+    value: 60,
     slide: function( event, ui ) {
       musicContainer.tubeplayer( "volume", ui.value );
     },
     stop: function( event, ui ) {
       volumeSlider.blur();
     }
-  });
-  
-  // make main container visible
-  $( document ).ready(function() {
-    mainContainer.css("visibility", "visible");
   });
 
   searchByQuery(null);
@@ -141,7 +136,7 @@ function searchByQuery( query ) {
     });
   }
   
-  request.execute( onSearchResponse );
+  request.execute( showResponse );
 }
 
 // Get list of videos related to the given videoId
@@ -159,10 +154,5 @@ function searchByRelated( videoId ) {
     });
   }
   
-  request.execute( onSearchResponse );
-}
-
-// Called automatically with the response of the YouTube API request.
-function onSearchResponse( response ) {
-    showResponse( response );
+  request.execute( showResponse );
 }
