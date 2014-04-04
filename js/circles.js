@@ -9,10 +9,13 @@ http://creativecommons.org/licenses/by-nc-nd/4.0/ or send a letter to:
 	Mountain View, CA, 94041
 */
 
+// Initializes an empty song queue used to prevent repeats
+var recentSongs = [];
+
 // Resizes all player elements within the browser window
 $.fn.handleResize = function(animate) {
-  var videoContainer = $( "#video-container" );
-  var searchText = $( "#search-text" );
+  var videoContainer = $( "#video-container" ),
+      searchText = $( "#search-text" );
   
   $( ".circle" ).resizeElement();
   videoContainer.resizeElement();
@@ -64,6 +67,22 @@ $.fn.positionCircles = function(animate) {
       });
     }
     
+    // TODO keep thinkering (this will be organized and moved elsewhere)
+    // display title of suggestion
+    /*var titleContainer = $( "<div></div>" ),
+        data = $( this ).data( "videoinfo" );
+    $( "#main-container" ).append(titleContainer);
+    titleContainer.html( data.title );
+    var width = titleContainer.width();
+    console.log( width );
+    titleContainer.css({
+      "color": "#fff",
+      "left": final_x + titleContainer.width() + "px",
+      "position": "absolute",
+      "top": final_y,
+      "z-index": 3
+    });*/
+    
     theta += theta_step;
   });
 }
@@ -71,9 +90,14 @@ $.fn.positionCircles = function(animate) {
 // Reassigns player properties after new circles created
 $.fn.refreshPlayerProperties = function() {
   
+  var circles = $( ".circle" ),
+      videoContainer = $( "#video-container" ),
+      searchForm = $( "#search-form" ),
+      searchText = $( "#search-text" );
+  
   // handle how circles can be dragged and dropped
-  $( ".circle" ).draggable( { revert: true, revertDuration: 180 } );
-  $( "#video-container" ).droppable({
+  circles.draggable( { revert: true, revertDuration: 180 } );
+  videoContainer.droppable({
     drop: function ( event, ui ) {
       var data = ui.draggable.data( "videoinfo" );
       $( document ).startNewSong( data );
@@ -81,16 +105,16 @@ $.fn.refreshPlayerProperties = function() {
   });
   
   // hide search bar when not hovering over center circle
-  $( "#search-form" ).hover(function(){
-    $( "#search-text" ).stop( true ).fadeTo( 900, 0.7 );
+  searchForm.hover(function(){
+    searchText.stop( true ).fadeTo( 900, 0.7 );
   },
   function(){
-    $( "#search-text" ).fadeTo( 1200, 0 );
+    searchText.fadeTo( 1200, 0 );
   });
 
   // focus search bar when center circle clicked
-  $( "#search-form" ).click(function(){
-    $( "#search-text" ).focus();
+  searchForm.click(function(){
+    searchText.focus();
   });
 }
 
@@ -108,28 +132,40 @@ $.fn.resizeElement = function() {
 $.fn.startNewSong = function( data ) {
   var videoId = data.videoId,
       title = data.title,
-      imageURL = data.imageURL;
+      imageURL = data.imageURL,
+      videoContainer = $( "#video-container" ),
+      volumeSlider = $( "#volume-slider" ),
+      musicContainer = $( "#bg-music-container" ),
+      playerControls = $( "#player-controls" ),
+      playButton = $( "#play-pause-btn" );
       
   // update center picture
-  $( "#video-container" ).css({
+  videoContainer.css({
     "background": "url(" + imageURL + ") no-repeat",
     "background-position": "center, center",
     "background-size": "180%, 180%"
   });
   
   // begin next song
-  var volume = $( "#volume-slider" ).slider( "option", "value" );
-  $( "#bg-music-container" ).tubeplayer( "play", videoId );
-  $( "#bg-music-container" ).tubeplayer( "volume", volume );
+  var volume = volumeSlider.slider( "option", "value" );
+  musicContainer.tubeplayer( "play", videoId );
+  musicContainer.tubeplayer( "volume", volume );
   searchByRelated( videoId );
   
-  // set up player controls
-  if ( $( "#player-controls" ).css( "visibility" ) == "hidden" ) {
-    $( "#player-controls" ).css( "visibility", "visible" );
+  // register songs in recently played
+  recentSongs.push( videoId );
+  if ( recentSongs.length > 10 ) {
+    recentSongs.shift();
   }
-  $( "#play-pause-btn" ).attr( "class", "pause" );
+  
+  // set up player controls
+  if ( playerControls.css( "visibility" ) == "hidden" ) {
+    playerControls.css( "visibility", "visible" );
+  }
+  playButton.attr( "class", "pause" );
 }
 
+// Toggle play/pause on the current video
 $.fn.togglePlayPause = function() {
   var playButton = $( "#play-pause-btn" ),
       musicContainer = $( "#bg-music-container" );
@@ -146,4 +182,10 @@ $.fn.togglePlayPause = function() {
 // Properly resize elements when window size changes
 $( window ).resize(function() {
   $( document ).handleResize( false );
+});
+
+// make main container visible
+$( window ).load(function() {
+  $( document ).handleResize( false );
+  $( "#video-container" ).css( "visibility", "visible" );
 });
