@@ -111,16 +111,15 @@ input {
   float: left;
   height: 32px;
   width: 32px;
+  background-image: url(playpause.png);
 }
 
 .pause {
-  background-image: url(pause.png);
-  background-position: center, center;
+  background-position: 33px, 0;
 }
 
 .play {
-  background-image: url(play.png);
-  background-position: center, center;
+  background-position: 0, 0;
 }
 
 #player-controls {
