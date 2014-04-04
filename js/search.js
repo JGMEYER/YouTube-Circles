@@ -35,9 +35,9 @@ function showResponse( response ) {
         "background-position": "center, center"
       });
       circle.data("videoinfo", {
-        videoId : item.id.videoId,
+        imageURL : item.snippet.thumbnails[ "high" ].url,
         title : item.snippet.title,
-        imageURL : item.snippet.thumbnails[ "high" ].url
+        videoId : item.id.videoId
       });
     }
   }
@@ -83,10 +83,25 @@ function onYouTubeApiLoad() {
     allowFullScreen: "false",
     initialVideo: "",
     preferredQuality: "default",
-    onPlayerEnded: function() {
-      var firstCircle = mainContainer.children( ".circle" ).first(),
-          data = firstCircle.data( "videoinfo" );
-      $( document ).startNewSong( data );
+    onPlayerEnded: function() {      
+      var circles = $( "#main-container .circle" ),
+          videoFound = false;
+      
+      // attempt to play suggestion that hasn't been played recently
+      circles.each(function() {
+        var data = $( this ).data( "videoinfo" )
+        
+        if ( $.inArray( data.videoId, recentSongs ) < 0 ) {
+          $( document ).startNewSong( data );
+          videoFound = true;
+          return false;
+        }
+      });
+      
+      // if all else fails, select the first recommendation
+      if ( !videoFound ) {
+        $( document ).startNewSong( circles.first().data( "videoinfo" ));
+      }
     }
   });
   

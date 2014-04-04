@@ -9,6 +9,9 @@ http://creativecommons.org/licenses/by-nc-nd/4.0/ or send a letter to:
 	Mountain View, CA, 94041
 */
 
+// Initializes an empty song queue used to prevent repeats
+var recentSongs = [];
+
 // Resizes all player elements within the browser window
 $.fn.handleResize = function(animate) {
   var videoContainer = $( "#video-container" ),
@@ -63,6 +66,22 @@ $.fn.positionCircles = function(animate) {
         "top": final_y + "px"
       });
     }
+    
+    // TODO keep thinkering (this will be organized and moved elsewhere)
+    // display title of suggestion
+    /*var titleContainer = $( "<div></div>" ),
+        data = $( this ).data( "videoinfo" );
+    $( "#main-container" ).append(titleContainer);
+    titleContainer.html( data.title );
+    var width = titleContainer.width();
+    console.log( width );
+    titleContainer.css({
+      "color": "#fff",
+      "left": final_x + titleContainer.width() + "px",
+      "position": "absolute",
+      "top": final_y,
+      "z-index": 3
+    });*/
     
     theta += theta_step;
   });
@@ -132,6 +151,12 @@ $.fn.startNewSong = function( data ) {
   musicContainer.tubeplayer( "play", videoId );
   musicContainer.tubeplayer( "volume", volume );
   searchByRelated( videoId );
+  
+  // register songs in recently played
+  recentSongs.push( videoId );
+  if ( recentSongs.length > 10 ) {
+    recentSongs.shift();
+  }
   
   // set up player controls
   if ( playerControls.css( "visibility" ) == "hidden" ) {
