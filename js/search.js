@@ -19,15 +19,23 @@ function showResponse( response ) {
   // reset circles
   $( "#search-text" ).val( "" );
   $( "#main-container .circle" ).remove();
+  /*$( "#main-container .song-title" ).remove();*/
   
   if ( items != null ) {
     // display search results
     for ( var i = 0; i < items.length; i++ ) {
       var item = response.items[ i ];
       
-      var imgURL = item.snippet.thumbnails[ "medium" ].url,
-          circle = $( "<div class='circle'></div>" );
-      $( "#main-container" ).append( circle );
+      var mainContainer = $( "#main-container" );
+          imgURL = item.snippet.thumbnails[ "medium" ].url,
+          circle = $( "<div class='circle' title='hello!'></div>" );
+          /*title = item.snippet.title.toUpperCase(),
+          song_title_div = $( "<div class='song-title'></div>" ),
+          song_title = "<p>" + title.substring( 0, 32 ) + "..." + "</p>";*/
+          
+      mainContainer.append( circle );
+      /*mainContainer.append( song_title_div );
+      song_title_div.html( song_title );*/
       
       // add circle to div with video data
       circle.css({
