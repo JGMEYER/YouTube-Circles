@@ -28,60 +28,75 @@ $.fn.handleResize = function(animate) {
 }
 
 // Organizes circles around the video container
-$.fn.positionCircles = function(animate) {
+$.fn.positionCircles = function( animate ) {
   var circles = $( ".circle" ),
-      radius_padding = $( "#main-container" ).height() / 8,
-      radius = $( "#video-container" ).width() / 2 + radius_padding,
-      center_x = $( "#video-container" ).position().left;
-      center_y = $( "#video-container" ).position().top;
+      circle_radius_padding = $( "#main-container" ).height() / 8,
+      text_radius_padding = $( "#main-container" ).height() / 8;
+      circle_pos_radius = $( "#video-container" ).width() / 2 + circle_radius_padding,
+      text_pos_radius = circle_pos_radius + text_radius_padding,
+      center_x = $( "#video-container" ).position().left,
+      center_y = $( "#video-container" ).position().top,
       theta = 0,
-      theta_step = ( 2 * Math.PI ) / circles.length
-      half_step = ( Math.PI / 2);
+      theta_step = ( 2 * Math.PI ) / circles.length,
+      half_step = ( Math.PI / 2 );
+      //song_title_divs = $( "#main-container .song-title" );
   
-  return circles.each(function() {
-    var start_x = center_x - $( this ).width() / 2,
-        start_y = center_y - $( this ).height() / 2,
-        final_x = Math.round( center_x + radius * Math.cos( theta - half_step ) - $( this ).width() / 2),
-        final_y = Math.round( center_y + radius * Math.sin( theta - half_step ) - $( this ).height() / 2);
+  // organize circles and their titles
+  circles.each(function( index, element ) {
+    var circle = $( this ),
+        circle_width = circle.width(),
+        circle_height = circle.height(),
+        circle_start_x = center_x - circle_width / 2,
+        circle_start_y = center_y - circle_height / 2,
+        cos_theta = Math.cos( theta - half_step );
+        sin_theta = Math.sin( theta - half_step );
+        circle_final_x = Math.round( center_x + circle_pos_radius * cos_theta - circle_width / 2 ),
+        circle_final_y = Math.round( center_y + circle_pos_radius * sin_theta - circle_height / 2 );
+        /*text_final_x = Math.round( center_x + text_pos_radius * cos_theta ),
+        text_final_y = Math.round( center_y + text_pos_radius * sin_theta );*/
 
     // animate circles outwards
     if ( animate ) {
-      $( this ).css({
-        "left": start_x + "px",
-        "top": start_y + "px",
+      circle.css({
+        "left": circle_start_x + "px",
+        "top": circle_start_y + "px",
         "z-index": 1
       });
     
-      $( this ).animate({
-        "left": final_x + "px",
-        "top": final_y + "px"
+      circle.animate({
+        "left": circle_final_x + "px",
+        "top": circle_final_y + "px"
       }, 500, function() {
-        $( this ).css( "z-index", "3" );
+        circle.css( "z-index", "3" );
       });
       
     // automatically place at final positions
     } else {
-      $( this ).css({
-        "left": final_x + "px",
-        "top": final_y + "px"
+      circle.css({
+        "left": circle_final_x + "px",
+        "top": circle_final_y + "px"
       });
     }
     
-    // TODO keep thinkering (this will be organized and moved elsewhere)
-    // display title of suggestion
-    /*var titleContainer = $( "<div></div>" ),
-        data = $( this ).data( "videoinfo" );
-    $( "#main-container" ).append(titleContainer);
-    titleContainer.html( data.title );
-    var width = titleContainer.width();
-    console.log( width );
-    titleContainer.css({
-      "color": "#fff",
-      "left": final_x + titleContainer.width() + "px",
-      "position": "absolute",
-      "top": final_y,
-      "z-index": 3
-    });*/
+    /*
+    var song_title_div = $( song_title_divs.get( index ) ),
+        font_size = parseInt( song_title_div.css( "font-size" ).split( "px" )[ 0 ] ),
+        top = text_final_y - font_size / 2,
+        left;
+    
+    if ( cos_theta > 0.00001 ) {
+      left = text_final_x;
+    } else if ( cos_theta < -0.00001 ) {
+      left = text_final_x - song_title_div.width();
+    } else {
+      left = text_final_x - song_title_div.width() / 2;
+    }
+    
+    song_title_div.css({
+      "left": left + "px",
+      "top": top + "px"
+    });
+    */
     
     theta += theta_step;
   });
