@@ -24,6 +24,9 @@ http://creativecommons.org/licenses/by-nc-nd/4.0/ or send a letter to:
   <script src="js/jquery.ui.touch-punch.min.js"></script>
   <script src='js/jquery.tubeplayer.min.js'></script>
   
+  <script type="text/javascript" src="js/jquery.mb.YTPlayer-2.6.4/inc/jquery.mb.YTPlayer.js"></script>
+	<link href="js/jquery.mb.YTPlayer-2.6.4/css/YTPlayer.css" media="all" rel="stylesheet" type="text/css">
+  
   <script src="js/circles.js"></script>
   <script src="js/search.js"></script>
   
@@ -43,5 +46,22 @@ http://creativecommons.org/licenses/by-nc-nd/4.0/ or send a letter to:
   </div>
   <div id="copyright">© JUSTIAN MEYER 2014</div>
 </body>
+
+<!-- <script>
+  $( window ).load(function() {
+    $( "#video-container" ).css({
+      "visibility": "visible",
+      "height": "50%",
+    });
+    
+    var vc = $( "#video-container" );
+    
+    vc.mb_YTPlayer({
+      onReady: function() {
+        vc.changeMovie({videoURL:'http://youtu.be/3ovA7zeviRo', ratio:'4/3'});
+      }
+    });
+  });
+</script> -->
 
 </html>
