@@ -12,48 +12,6 @@ http://creativecommons.org/licenses/by-nc-nd/4.0/ or send a letter to:
 // Yes, this is shown publicly, no you do not have permission to use it
 var apiKey = "AIzaSyCe_BSo93KVRNpwYUpfrvNiJxmoqXlzvyM";
 
-// Update circles with new search results
-function showResponse( response ) {    
-  var items = response.items;
-  
-  // reset circles
-  $( "#search-text" ).val( "" );
-  $( "#main-container .circle" ).remove();
-  /*$( "#main-container .song-title" ).remove();*/
-  
-  if ( items != null ) {
-    // display search results
-    for ( var i = 0; i < items.length; i++ ) {
-      var item = response.items[ i ];
-      
-      var mainContainer = $( "#main-container" );
-          imgURL = item.snippet.thumbnails[ "medium" ].url,
-          circle = $( "<div class='circle' title='hello!'></div>" );
-          /*title = item.snippet.title.toUpperCase(),
-          song_title_div = $( "<div class='song-title'></div>" ),
-          song_title = "<p>" + title.substring( 0, 32 ) + "..." + "</p>";*/
-          
-      mainContainer.append( circle );
-      /*mainContainer.append( song_title_div );
-      song_title_div.html( song_title );*/
-      
-      // add circle to div with video data
-      circle.css({
-        "background": "url(" + imgURL + ") no-repeat",
-        "background-position": "center, center"
-      });
-      circle.data("videoinfo", {
-        imageURL : item.snippet.thumbnails[ "high" ].url,
-        title : item.snippet.title,
-        videoId : item.id.videoId
-      });
-    }
-  }
-  
-  $( document ).handleResize( true );
-  $( document ).refreshPlayerProperties();
-}
-
 // Called automatically when JavaScript client library is loaded.
 function onClientLoad() {
   gapi.client.load( "youtube", "v3", onYouTubeApiLoad );
@@ -178,4 +136,43 @@ function searchByRelated( videoId ) {
   }
   
   request.execute( showResponse );
+}
+
+// Update circles with new search results
+function showResponse( response ) {    
+  var items = response.items;
+  
+  // reset circles
+  $( "#search-text" ).val( "" );
+  $( "#main-container .circle" ).remove();
+  
+  if ( items != null ) {
+    // display search results
+    for ( var i = 0; i < items.length; i++ ) {
+      var item = response.items[ i ];
+      
+      var mainContainer = $( "#main-container" );
+          imgURL = item.snippet.thumbnails[ "medium" ].url,
+          title = item.snippet.title,
+          circle = $( "<div class='circle'></div>" );
+      
+      // add song info to circle
+      circle.attr( "title", title );
+      circle.css({
+        "background": "url(" + imgURL + ") no-repeat",
+        "background-position": "center, center"
+      });
+      circle.data( "videoinfo", {
+        imageURL: item.snippet.thumbnails[ "high" ].url,
+        title: item.snippet.title,
+        videoId: item.id.videoId
+      });
+      
+      // add circle to div
+      mainContainer.append( circle );
+    }
+  }
+  
+  $( document ).handleResize( true );
+  $( document ).refreshPlayerProperties();
 }

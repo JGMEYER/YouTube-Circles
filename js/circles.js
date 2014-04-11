@@ -39,7 +39,6 @@ $.fn.positionCircles = function( animate ) {
       theta = 0,
       theta_step = ( 2 * Math.PI ) / circles.length,
       half_step = ( Math.PI / 2 );
-      //song_title_divs = $( "#main-container .song-title" );
   
   // organize circles and their titles
   circles.each(function( index, element ) {
@@ -52,8 +51,6 @@ $.fn.positionCircles = function( animate ) {
         sin_theta = Math.sin( theta - half_step );
         circle_final_x = Math.round( center_x + circle_pos_radius * cos_theta - circle_width / 2 ),
         circle_final_y = Math.round( center_y + circle_pos_radius * sin_theta - circle_height / 2 );
-        /*text_final_x = Math.round( center_x + text_pos_radius * cos_theta ),
-        text_final_y = Math.round( center_y + text_pos_radius * sin_theta );*/
 
     // animate circles outwards
     if ( animate ) {
@@ -78,33 +75,12 @@ $.fn.positionCircles = function( animate ) {
       });
     }
     
-    /*
-    var song_title_div = $( song_title_divs.get( index ) ),
-        font_size = parseInt( song_title_div.css( "font-size" ).split( "px" )[ 0 ] ),
-        top = text_final_y - font_size / 2,
-        left;
-    
-    if ( cos_theta > 0.00001 ) {
-      left = text_final_x;
-    } else if ( cos_theta < -0.00001 ) {
-      left = text_final_x - song_title_div.width();
-    } else {
-      left = text_final_x - song_title_div.width() / 2;
-    }
-    
-    song_title_div.css({
-      "left": left + "px",
-      "top": top + "px"
-    });
-    */
-    
     theta += theta_step;
   });
 }
 
 // Reassigns player properties after new circles created
 $.fn.refreshPlayerProperties = function() {
-  
   var circles = $( ".circle" ),
       videoContainer = $( "#video-container" ),
       searchForm = $( "#search-form" ),
@@ -133,12 +109,11 @@ $.fn.refreshPlayerProperties = function() {
   });
 }
 
-// Resizes a player element to a circle of equal height and width
+// Resizes a player element to equal height and width
 $.fn.resizeElement = function() {
   return this.each(function() {
     $( this ).css({
-      "height": $( this ).width() + "px",
-      "border-radius": $( this ).width() / 2 + "px"
+      "height": $( this ).width() + "px"
     });
   });
 }
@@ -199,7 +174,7 @@ $( window ).resize(function() {
   $( document ).handleResize( false );
 });
 
-// make main container visible
+// Make main container visible
 $( window ).load(function() {
   $( document ).handleResize( false );
   $( "#video-container" ).css( "visibility", "visible" );
