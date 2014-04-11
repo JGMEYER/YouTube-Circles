@@ -12,7 +12,8 @@ http://creativecommons.org/licenses/by-nc-nd/4.0/ or send a letter to:
 /* Body and Background */
 
 body {
-  background-color: #191919;
+  background: -moz-radial-gradient(circle, rgba(0, 0, 0, .8),
+    rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.96), rgba(0, 0, 0, 1) 50%) no-repeat;
 }
 
 body,
@@ -28,28 +29,26 @@ html,
 /* Center Container */
 
 #video-container {
-  background-color: #191919;
-  border: 3px solid #999;
-  box-shadow: 0 5px 5px rgba(0, 0, 0, .3);
-  -moz-box-shadow: 0 5px 5px rgba(0, 0, 0, .3);
-  -webkit-box-shadow: 0 5px 5px rgba(0, 0, 0, .3);
+  background-color: #000;
+  border: 2px solid #777;
+  border-radius: 50%;
   left: 50%;
-  margin-left: -13%;
-  margin-top: -13%;
+  margin-left: -12.5%;
+  margin-top: -12.5%;
   opacity: 1;
   padding: 0;
   position: absolute;
   top: 50%;
   vertical-align: middle;
   visibility: hidden;
-  width: 26%;
+  width: 25%;
   z-index: 2;
 }
 
 /* Search Bar */
 
 input {
-  border: 2px solid #999;
+  border: 1px solid #999;
   border-radius: 10px;
   -webkit-border-radius: 10px;
   -moz-border-radius: 10px;
@@ -81,15 +80,16 @@ input {
 /* Circles */
 
 .circle {
-  background:url(http://placehold.it/320x180) no-repeat;
+  background: url(http://placehold.it/320x180) no-repeat;
   background-position: center, center;
-  border: 2px solid #999;
+  border: 1px solid #aaa;
+  border-radius: 50%;
   box-shadow: 0 5px 5px rgba(0, 0, 0, .3);
-  -moz-box-shadow: 0 5px 5px rgba(0, 0, 0, 1);
-  -webkit-box-shadow: 0 5px 5px rgba(0, 0, 0, 1);
-  opacity: .3;
+  -moz-box-shadow: 0 5px 5px rgba(0, 0, 0, .3);
+  -webkit-box-shadow: 0 5px 5px rgba(0, 0, 0, .3);
+  opacity: .5;/*.3;*/
   position: absolute;
-  width: 10%;
+  width: 9.5%;
   z-index: 1;
 }
 
