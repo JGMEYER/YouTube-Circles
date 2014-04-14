@@ -92,7 +92,6 @@ function onYouTubeApiLoad() {
     min: 1,
     value: 60,
     slide: function( event, ui ) {
-      //video.setYTPVolume( ui.value );
       video.tubeplayer( "volume", ui.value );
     },
     stop: function( event, ui ) {
@@ -161,7 +160,8 @@ function showResponse( response ) {
       circle.attr( "title", title );
       circle.css({
         "background": "url(" + imgURL + ") no-repeat",
-        "background-position": "center, center"
+        "background-position": "center, center",
+        "background-size": "200%"
       });
       circle.data( "videoinfo", {
         imageURL: item.snippet.thumbnails[ "high" ].url,
