@@ -23,9 +23,9 @@ function onYouTubeApiLoad() {
 
   var searchForm = $( "#search-form" ),
       searchText = $( "#search-text" ),
-      musicContainer = $( "#bg-music-container" ),
       mainContainer = $( "#main-container" )
       playButton = $( "#play-pause-btn" ),
+      video = $( "#video" ),
       volumeSlider = $( "#volume-slider" );
 
   // setup search functionality
@@ -43,12 +43,12 @@ function onYouTubeApiLoad() {
   searchText.focus();
   
   // setup music player
-  musicContainer.tubeplayer({
-    width: 0,
-    height: 0,
+  video.tubeplayer({
     allowFullScreen: "false",
-    initialVideo: "",
+    height: "100%",
     preferredQuality: "default",
+    showControls: 0,
+    width: "100%",
     onPlayerEnded: function() {      
       var circles = $( "#main-container .circle" ),
           videoFound = false;
@@ -66,7 +66,7 @@ function onYouTubeApiLoad() {
       
       // if all else fails, select the first recommendation
       if ( !videoFound ) {
-        $( document ).startNewSong( circles.first().data( "videoinfo" ));
+        $( document ).startNewSong( circles.first().data( "videoinfo" ) );
       }
     }
   });
@@ -92,7 +92,8 @@ function onYouTubeApiLoad() {
     min: 1,
     value: 60,
     slide: function( event, ui ) {
-      musicContainer.tubeplayer( "volume", ui.value );
+      //video.setYTPVolume( ui.value );
+      video.tubeplayer( "volume", ui.value );
     },
     stop: function( event, ui ) {
       volumeSlider.blur();

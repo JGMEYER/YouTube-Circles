@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>currentDocument</key>
-	<string>css/style.css</string>
+	<string>js/circles.js</string>
 	<key>documents</key>
 	<array>
 		<dict>
@@ -18,7 +18,7 @@
 		</dict>
 	</array>
 	<key>fileHierarchyDrawerWidth</key>
-	<integer>200</integer>
+	<integer>215</integer>
 	<key>metaData</key>
 	<dict>
 		<key>css/style.css</key>
@@ -26,68 +26,159 @@
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>5</integer>
+				<integer>19</integer>
 				<key>line</key>
-				<integer>17</integer>
+				<integer>38</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>0</integer>
+			<integer>28</integer>
 		</dict>
 		<key>index.html</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>46</integer>
+				<integer>70</integer>
 				<key>line</key>
-				<integer>46</integer>
+				<integer>26</integer>
 			</dict>
+			<key>columnSelection</key>
+			<false/>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>1</integer>
+			<integer>5</integer>
+			<key>selectFrom</key>
+			<dict>
+				<key>column</key>
+				<integer>38</integer>
+				<key>line</key>
+				<integer>26</integer>
+			</dict>
+			<key>selectTo</key>
+			<dict>
+				<key>column</key>
+				<integer>70</integer>
+				<key>line</key>
+				<integer>26</integer>
+			</dict>
 		</dict>
 		<key>js/circles.js</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>43</integer>
+				<integer>29</integer>
 				<key>line</key>
-				<integer>82</integer>
+				<integer>123</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>5</integer>
+			<integer>115</integer>
+		</dict>
+		<key>js/jquery.mb.YTPlayer-2.6.4/css/YTPlayer.css</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>0</integer>
+				<key>line</key>
+				<integer>0</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
+		</dict>
+		<key>js/jquery.mb.YTPlayer-2.6.4/demo_videoList.html</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>0</integer>
+				<key>line</key>
+				<integer>0</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>80</integer>
+		</dict>
+		<key>js/jquery.mb.YTPlayer-2.6.6/demo.html</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>41</integer>
+				<key>line</key>
+				<integer>93</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>50</integer>
+		</dict>
+		<key>js/jquery.mb.YTPlayer-2.6.6/inc/jquery.mb.YTPlayer.js</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>20</integer>
+				<key>line</key>
+				<integer>476</integer>
+			</dict>
+			<key>columnSelection</key>
+			<false/>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>449</integer>
+			<key>selectFrom</key>
+			<dict>
+				<key>column</key>
+				<integer>13</integer>
+				<key>line</key>
+				<integer>476</integer>
+			</dict>
+			<key>selectTo</key>
+			<dict>
+				<key>column</key>
+				<integer>20</integer>
+				<key>line</key>
+				<integer>476</integer>
+			</dict>
 		</dict>
 		<key>js/search.js</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>15</integer>
+				<integer>49</integer>
 				<key>line</key>
-				<integer>167</integer>
+				<integer>77</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>0</integer>
+			<integer>65</integer>
 		</dict>
 	</dict>
 	<key>openDocuments</key>
 	<array>
 		<string>index.html</string>
+		<string>js/jquery.mb.YTPlayer-2.6.6/inc/jquery.mb.YTPlayer.js</string>
+		<string>js/jquery.mb.YTPlayer-2.6.4/css/YTPlayer.css</string>
 		<string>css/style.css</string>
-		<string>js/circles.js</string>
 		<string>js/search.js</string>
+		<string>js/circles.js</string>
+		<string>js/jquery.mb.YTPlayer-2.6.6/demo.html</string>
 	</array>
 	<key>showFileHierarchyDrawer</key>
 	<true/>
 	<key>windowFrame</key>
-	<string>{{216, 0}, {1220, 878}}</string>
+	<string>{{223, -0}, {1213, 878}}</string>
 </dict>
 </plist>

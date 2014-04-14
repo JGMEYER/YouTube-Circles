@@ -87,7 +87,7 @@ $.fn.refreshPlayerProperties = function() {
       searchText = $( "#search-text" );
   
   // handle how circles can be dragged and dropped
-  circles.draggable( { revert: true, revertDuration: 180 } );
+  circles.draggable( { containment: "body", revert: true, revertDuration: 180 } );
   videoContainer.droppable({
     drop: function ( event, ui ) {
       var data = ui.draggable.data( "videoinfo" );
@@ -112,6 +112,7 @@ $.fn.refreshPlayerProperties = function() {
 // Resizes a player element to equal height and width
 $.fn.resizeElement = function() {
   return this.each(function() {
+    
     $( this ).css({
       "height": $( this ).width() + "px"
     });
@@ -125,7 +126,7 @@ $.fn.startNewSong = function( data ) {
       imageURL = data.imageURL,
       videoContainer = $( "#video-container" ),
       volumeSlider = $( "#volume-slider" ),
-      musicContainer = $( "#bg-music-container" ),
+      video = $( "#video" ),
       playerControls = $( "#player-controls" ),
       playButton = $( "#play-pause-btn" );
       
@@ -138,9 +139,12 @@ $.fn.startNewSong = function( data ) {
   
   // begin next song
   var volume = volumeSlider.slider( "option", "value" );
-  musicContainer.tubeplayer( "play", videoId );
-  musicContainer.tubeplayer( "volume", volume );
+  video.tubeplayer( "play", videoId );
+  video.tubeplayer( "volume", volume );
   searchByRelated( videoId );
+  
+  // make video visible
+  video.css( "visibility", "visible" );
   
   // register songs in recently played
   recentSongs.push( videoId );
@@ -158,13 +162,13 @@ $.fn.startNewSong = function( data ) {
 // Toggle play/pause on the current video
 $.fn.togglePlayPause = function() {
   var playButton = $( "#play-pause-btn" ),
-      musicContainer = $( "#bg-music-container" );
+      video = $( "#video" );
   
   if ( playButton.attr( "class" ) == "play" ) {
-    musicContainer.tubeplayer( "play" );
+    video.tubeplayer( "play" );
     playButton.attr( "class", "pause" );
   } else {
-    musicContainer.tubeplayer( "pause" );
+    video.tubeplayer( "pause" );
     playButton.attr( "class", "play" );
   }
 }

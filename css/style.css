@@ -9,10 +9,19 @@ http://creativecommons.org/licenses/by-nc-nd/4.0/ or send a letter to:
 	Mountain View, CA, 94041
 */
 
-/* Body and Background */
+/*------------------------------------------------------------------------------
+Body and Background
+------------------------------------------------------------------------------*/
 
 body {
+  background: #000;
+  background: -webkit-radial-gradient(circle, rgba(0, 0, 0, .8),
+    rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.96), rgba(0, 0, 0, 1) 50%) no-repeat;
+  background: -o-radial-gradient(circle, rgba(0, 0, 0, .8),
+    rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.96), rgba(0, 0, 0, 1) 50%) no-repeat;
   background: -moz-radial-gradient(circle, rgba(0, 0, 0, .8),
+    rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.96), rgba(0, 0, 0, 1) 50%) no-repeat;
+  background: radial-gradient(circle, rgba(0, 0, 0, .8),
     rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.96), rgba(0, 0, 0, 1) 50%) no-repeat;
 }
 
@@ -26,7 +35,27 @@ html,
   width: 100%;
 }
 
-/* Center Container */
+/*------------------------------------------------------------------------------
+Center Container
+------------------------------------------------------------------------------*/
+
+#video {
+  height: 100%; /* youtube uses 16:9 ratio players */
+  margin-left: 0%;
+  margin-top: -100%;
+  text-align: center;
+  position: relative;
+  visibility: hidden;
+  width: 100%; /* youtube uses 16:9 ratio players */
+  z-index: -5;
+}
+
+#video iframe {
+  margin: 0;
+  padding: 0;
+  width: 200%;
+  margin-left: -50%;
+}
 
 #video-container {
   background-color: #000;
@@ -36,6 +65,7 @@ html,
   margin-left: -12.5%;
   margin-top: -12.5%;
   opacity: 1;
+  overflow: hidden;
   padding: 0;
   position: absolute;
   top: 50%;
@@ -45,7 +75,9 @@ html,
   z-index: 2;
 }
 
-/* Search Bar */
+/*------------------------------------------------------------------------------
+Search Bar
+------------------------------------------------------------------------------*/
 
 input {
   border: 1px solid #999;
@@ -77,7 +109,9 @@ input {
   position: relative;
 }
 
-/* Circles */
+/*------------------------------------------------------------------------------
+Circles
+------------------------------------------------------------------------------*/
 
 .circle {
   background: url(http://placehold.it/320x180) no-repeat;
@@ -89,7 +123,7 @@ input {
   -webkit-box-shadow: 0 5px 5px rgba(0, 0, 0, .3);
   opacity: .5;/*.3;*/
   position: absolute;
-  width: 9.5%;
+  width: 10%;
   z-index: 1;
 }
 
@@ -112,12 +146,15 @@ input {
 
 .song-title p {
   color: #fff;
-  font-family: Rockwell, 'Courier Bold', Courier, Georgia, Times, 'Times New Roman', serif;
+  font-family: Rockwell, 'Courier Bold', Courier, Georgia, Times,
+    'Times New Roman', serif;
   font-size: 12px;
   visibility: hidden;
 }
 
-/* Player Controls */
+/*------------------------------------------------------------------------------
+Player Controls
+------------------------------------------------------------------------------*/
 
 #play-pause-btn {
   background-image: url(playpause.png);
@@ -182,11 +219,13 @@ input {
   border-radius: 3px;
 }
 
-/* Footer */
+/*------------------------------------------------------------------------------
+Footer
+------------------------------------------------------------------------------*/
 
 #copyright {
   bottom: 5px;
-  color: #888;
+  color: #fff;
   font-family: "Courier New", Courier, monospace;
   font-size: 12px;
   opacity: .2;
