@@ -36,6 +36,15 @@ html,
 }
 
 /*------------------------------------------------------------------------------
+Fonts
+------------------------------------------------------------------------------*/
+
+@font-face {
+  font-family: 'Walkway Ultrabold';
+  src: url('walkway_ultrabold.ttf');
+}
+
+/*------------------------------------------------------------------------------
 Center Container
 ------------------------------------------------------------------------------*/
 
@@ -54,7 +63,7 @@ Center Container
   margin: 0;
   padding: 0;
   width: 200%;
-  margin-left: -51%;
+  margin-left: -50.47%;
 }
 
 #video-container {
@@ -80,16 +89,16 @@ Search Bar
 ------------------------------------------------------------------------------*/
 
 input {
-  border: 1px solid #999;
-  border-radius: 10px;
-  -webkit-border-radius: 10px;
-  -moz-border-radius: 10px;
+  border: 1px solid #aaa;
+  border-radius: 8px;
+  -webkit-border-radius: 8px;
+  -moz-border-radius: 8px;
   opacity: .45;
   text-align: center;
 }
 
 #search-bar {
-  background-color: #d98538;
+  /*background-color: #d98538;*/
   height: 50px;
   width: 100%;
 }
@@ -100,10 +109,10 @@ input {
 }
 
 #search-text {
+  color: #000;
   display: block;
-  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  font-size: 18px;
-  font-weight: bold;
+  font-family: 'Walkway Ultrabold', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 17px;
   height: 24px;
   margin : 0 auto;
   position: relative;
@@ -146,7 +155,7 @@ Circles
 
 .song-title p {
   color: #fff;
-  font-family: Rockwell, 'Courier Bold', Courier, Georgia, Times,
+  font-family: 'Rockwell', 'Courier Bold', Courier, Georgia, Times,
     'Times New Roman', serif;
   font-size: 12px;
   visibility: hidden;
@@ -226,7 +235,7 @@ Footer
 #copyright {
   bottom: 5px;
   color: #fff;
-  font-family: "Courier New", Courier, monospace;
+  font-family: 'Courier New', Courier, monospace;
   font-size: 12px;
   opacity: .2;
   position: absolute;
