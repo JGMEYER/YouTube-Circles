@@ -44,9 +44,12 @@ function onYouTubeApiLoad() {
   
   // setup music player
   video.tubeplayer({
-    allowFullScreen: "false",
+    allowFullScreen: false,
+    annotations: false,
     height: "100%",
+    // initialVideo: "",
     preferredQuality: "default",
+    // protocol: "https",
     showControls: 0,
     width: "100%",
     onPlayerEnded: function() {      
@@ -76,16 +79,6 @@ function onYouTubeApiLoad() {
     $( document ).togglePlayPause();
   });
   
-  // allow play pause with spacebar
-  $( document ).keypress(function( event ) {
-    if ( $( event.target ).closest( "input" )[ 0 ] ) {
-      return;
-    }
-    if( event.which == 32 ) {
-      $( document ).togglePlayPause();
-    }
-  });
-  
   // set up volume slider
   volumeSlider.slider({
     range: "min",
@@ -96,6 +89,20 @@ function onYouTubeApiLoad() {
     },
     stop: function( event, ui ) {
       volumeSlider.blur();
+    }
+  });
+  
+  // allow play pause with spacebar and volume control on -/+ keys
+  $( document ).keypress(function( event ) {
+    if ( $( event.target ).closest( "input" )[ 0 ] ) {
+      return;
+    }
+    if ( event.which == 32 ) { // spacebar
+      $( document ).togglePlayPause();
+    } else if ( event.which == 45 ) { // '-/_' key
+      volumeSlider.slider( "value", volumeSlider.slider( "value" ) - 5 );
+    } else if ( event.which == 61 ) { // '=/+' key
+      volumeSlider.slider( "value", volumeSlider.slider( "value" ) + 5 );
     }
   });
 
