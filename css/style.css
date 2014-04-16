@@ -96,6 +96,20 @@ input {
   text-align: center;
 }
 
+/* placeholder text */
+::-webkit-input-placeholder {
+  color: #525252;
+}
+:-moz-placeholder {
+  color: black;
+}
+::-moz-placeholder {
+  color: black; 
+}
+:-ms-input-placeholder {  
+  color: black;
+}
+
 #search-form {
   height: 100%;
   width: 100%;
