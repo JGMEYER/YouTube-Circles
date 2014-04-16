@@ -97,7 +97,7 @@ $.fn.refreshPlayerProperties = function() {
   
   // hide search bar when not hovering over center circle
   searchForm.hover(function(){
-    searchText.stop( true ).fadeTo( 900, 0.7 );
+    searchText.stop( true ).fadeTo( 900, 1 );
   },
   function(){
     searchText.fadeTo( 1200, 0 );

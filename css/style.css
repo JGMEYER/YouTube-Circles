@@ -89,18 +89,11 @@ Search Bar
 ------------------------------------------------------------------------------*/
 
 input {
-  border: 1px solid #aaa;
-  border-radius: 8px;
-  -webkit-border-radius: 8px;
-  -moz-border-radius: 8px;
-  opacity: .45;
+  border: 1px solid #777;
+  border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
   text-align: center;
-}
-
-#search-bar {
-  /*background-color: #d98538;*/
-  height: 50px;
-  width: 100%;
 }
 
 #search-form {
@@ -109,6 +102,7 @@ input {
 }
 
 #search-text {
+  background-color: rgba(255, 255, 255, 0.7);
   color: #000;
   display: block;
   font-family: 'Walkway Ultrabold', 'Helvetica Neue', Helvetica, Arial, sans-serif;

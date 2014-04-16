@@ -84,11 +84,14 @@ function onYouTubeApiLoad() {
     range: "min",
     min: 1,
     value: 60,
-    slide: function( event, ui ) {
+    change: function( event, ui) { // change caused by hotkey
+      video.tubeplayer( "volume", ui.value );
+    },
+    slide: function( event, ui ) { // change from manual slide
       video.tubeplayer( "volume", ui.value );
     },
     stop: function( event, ui ) {
-      volumeSlider.blur();
+      volumeSlider.blur(); // prevent odd box around slider after move
     }
   });
   
@@ -99,9 +102,9 @@ function onYouTubeApiLoad() {
     }
     if ( event.which == 32 ) { // spacebar
       $( document ).togglePlayPause();
-    } else if ( event.which == 45 ) { // '-/_' key
+    } else if ( event.which == 45 ) { // '-' key, unshifted
       volumeSlider.slider( "value", volumeSlider.slider( "value" ) - 5 );
-    } else if ( event.which == 61 ) { // '=/+' key
+    } else if ( event.which == 61 ) { // '+' key, unshifted
       volumeSlider.slider( "value", volumeSlider.slider( "value" ) + 5 );
     }
   });
