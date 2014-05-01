@@ -47,9 +47,8 @@ function onYouTubeApiLoad() {
     allowFullScreen: false,
     annotations: false,
     height: "100%",
-    // initialVideo: "",
+    initialVideo: "5A-cOmaaBgQ", // 10 hours black screen (TODO - better solution)
     preferredQuality: "default",
-    // protocol: "https",
     showControls: 0,
     width: "100%",
     onPlayerEnded: function() {      
@@ -166,8 +165,13 @@ function showResponse( response ) {
           title = item.snippet.title,
           circle = $( "<div class='circle'></div>" );
       
-      // add song info to circle
+      // add title to circle for tooltip
+      if ( title.length > 40 ) {
+        title = title.substring(0, 40).trim() + " ...";
+      }
       circle.attr( "title", title );
+      
+      // add song info to circle
       circle.css({
         "background": "url(" + imgURL + ") no-repeat",
         "background-position": "center, center",

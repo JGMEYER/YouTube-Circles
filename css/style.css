@@ -169,6 +169,17 @@ Circles
   visibility: hidden;
 }
 
+.ui-tooltip {
+  border-radius: 10px;
+  box-shadow: 0 0 7px black;
+  color: #777;
+  font-size: 10px;
+  font-style: "Helvetica Neue", Sans-Serif;
+  font-weight: bold;
+  padding: 5px 10px;
+  text-transform: uppercase;
+}
+
 /*------------------------------------------------------------------------------
 Player Controls
 ------------------------------------------------------------------------------*/

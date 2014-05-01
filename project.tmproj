@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>currentDocument</key>
-	<string>css/style.css</string>
+	<string>js/circles.js</string>
 	<key>documents</key>
 	<array>
 		<dict>
@@ -26,14 +26,14 @@
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>1</integer>
+				<integer>21</integer>
 				<key>line</key>
-				<integer>96</integer>
+				<integer>168</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>32</integer>
+			<integer>142</integer>
 		</dict>
 		<key>index.html</key>
 		<dict>
@@ -54,14 +54,14 @@
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>30</integer>
+				<integer>22</integer>
 				<key>line</key>
-				<integer>98</integer>
+				<integer>64</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>0</integer>
+			<integer>10</integer>
 		</dict>
 		<key>js/jquery.tubeplayer.min.js</key>
 		<dict>
@@ -112,14 +112,14 @@
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>25</integer>
+				<integer>40</integer>
 				<key>line</key>
-				<integer>81</integer>
+				<integer>167</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>64</integer>
+			<integer>141</integer>
 		</dict>
 	</dict>
 	<key>openDocuments</key>
@@ -134,6 +134,6 @@
 	<key>showFileHierarchyDrawer</key>
 	<true/>
 	<key>windowFrame</key>
-	<string>{{223, -0}, {1213, 878}}</string>
+	<string>{{223, 0}, {1213, 878}}</string>
 </dict>
 </plist>

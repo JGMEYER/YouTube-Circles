@@ -51,6 +51,8 @@ $.fn.positionCircles = function( animate ) {
         sin_theta = Math.sin( theta - half_step );
         circle_final_x = Math.round( center_x + circle_pos_radius * cos_theta - circle_width / 2 ),
         circle_final_y = Math.round( center_y + circle_pos_radius * sin_theta - circle_height / 2 );
+        // tooltip_x = Math.round( center_x + circle_pos_radius * cos_theta + circle_width / 2 ),
+        // tooltip_y = Math.round( center_x + circle_pos_radius * sin_theta + circle_width / 2 );
 
     // animate circles outwards
     if ( animate ) {
@@ -74,6 +76,14 @@ $.fn.positionCircles = function( animate ) {
         "top": circle_final_y + "px"
       });
     }
+    
+    // position tooltips
+    // circle.tooltip({
+    //   position: {
+    //     my: "right-20",
+    //     at: "left"
+    //   }
+    // });
     
     theta += theta_step;
   });
